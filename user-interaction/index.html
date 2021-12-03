@@ -55,8 +55,7 @@
     }
 
     let t = 100;
-    let f = -100;
-    let cScore = 0;
+    let currentScore = 0;
     let highScore = 0;
     let elementScore = document.getElementById("score");
     let elementHighScore = document.getElementById("highscore");
@@ -101,18 +100,18 @@
                         renderer.renderLists.dispose();
                     });
 
-                    cScore += t;
-                    console.log(cScore);
-                    elementScore.innerHTML = cScore;
+                    currentScore += t;
+                    console.log(currentScore);
+                    elementScore.innerHTML = currentScore;
                 }
                 else{
                     //kondisi warna beda
                     selectedObject[0][0].object.material.emissive.setHex(originalColor[0]);
                     selectedObject[0][0].object.rotation.z=0;
 
-                    cScore -= f;
-                    console.log(cScore);
-                    elementScore.innerHTML = cScore;
+                    currentScore -= t;
+                    console.log(currentScore);
+                    elementScore.innerHTML = currentScore;
                 }
                 selectedObject = [];
                 originalColor = [];
@@ -133,13 +132,13 @@
             if(scene.children.length >= 56){
                 speed = baseSpeed;
                 
-                if (cScore > highScore) {
+                if (currentScore > highScore) {
                     highScore = cScore;
                     elementHighScore.innerHTML = highScore;
                 }
 
-                cScore = 0;
-                elementScore.innerHTML = cScore;
+                currentScore = 0;
+                elementScore.innerHTML = currentScore;
 
             }
             else{
@@ -197,13 +196,13 @@
           
         };
       
-        const clock = new THREE.Clock();
+        // const clock = new THREE.Clock();
         // main animation loop - calls 50-60 in a second.
         let mainLoop = function() {
-            const elapsedTime = clock.getElapsedTime();
+            // const elapsedTime = clock.getElapsedTime();
 
             if (selectedObject.length == 1) {
-                selectedObject[0][0].object.material.emissive.setHex(elapsedTime % 0.5 >= 0.25 ? originalColor[0] : (originalColor[0] * 3));
+                selectedObject[0][0].object.material.emissive;
                 selectedObject[0][0].object.rotation.z += 0.1;
             }
         
